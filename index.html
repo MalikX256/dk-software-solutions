@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dk Software Solutions offers software development, web/mobile apps, IT consulting, phone repair (KG/MDM unlocking, FRP, passwords), and computer repair services.">
     <title>Dk Software Solutions</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="logo">Dk Software Solutions</div>
-        <div class="hamburger">☰</div>
-        <nav class="nav-menu">
+        <div class="hamburger" role="button" aria-label="Toggle navigation menu">☰</div>
+        <nav class="nav-menu" aria-label="Main navigation">
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#services">Software Services</a></li>
+                <li><a href="#hardware-repair">Hardware & Repair</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#signup">Sign Up</a></li>
             </ul>
@@ -26,39 +28,71 @@
     <!-- Hero Section -->
     <section id="home">
         <h1>Welcome to Dk Software Solutions</h1>
-        <p>Transforming Businesses through Innovative Software Solutions</p>
-        <button class="cta-button">Learn More</button>
+        <p>Transforming Businesses with Innovative Technology Solutions</p>
+        <button class="cta-button" onclick="window.location.href='#services'">Explore Our Services</button>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <h2>About Us</h2>
-        <p>Welcome to Dk Software Solutions, your trusted partner in innovative technology solutions. Founded by visionary entrepreneur Malik X, our company is dedicated to crafting cutting-edge software solutions that transform businesses and revolutionize industries.</p>
-        <p>At Dk Software Solutions, we combine technical expertise with creative vision to deliver tailored software applications that meet the unique needs of our clients.</p>
+        <p>Welcome to Dk Software Solutions, your trusted partner in technology innovation. Founded by a visionary entrepreneur, we specialize in delivering cutting-edge software solutions, IT consulting, and comprehensive hardware repair services to empower businesses and individuals alike.</p>
+        <p>Our expert team is dedicated to providing tailored solutions that meet your unique needs, from software development to advanced phone and computer repairs.</p>
         <ul>
-            <li>Join Dk Software Solutions today and discover the power of technology in shaping your business success.</li>
+            <li>Partner with us to unlock the full potential of technology for your success.</li>
         </ul>
-        <img src="images/malik-x.jpg" alt="Malik X, Founder of Dk Software Solutions">
     </section>
 
-    <!-- Services Section -->
+    <!-- Software Services Section -->
     <section id="services">
-        <h2>Our Services</h2>
+        <h2>Our Software Services</h2>
         <div class="services-container">
             <div class="service-item">
-                <img src="images/computer_brands.jpg" alt="Computer Brands">
+                <img src="images/computer_brands.jpg" alt="Custom Software Development" loading="lazy">
                 <h3>Custom Software Development</h3>
-                <p>Tailored solutions for your unique business needs.</p>
+                <p>Scalable, tailored software solutions designed to meet your unique business requirements.</p>
             </div>
             <div class="service-item">
-                <img src="images/dk_world.jpg" alt="Dk Software World">
+                <img src="images/dk_world.jpg" alt="Web & Mobile Development" loading="lazy">
                 <h3>Web & Mobile Development</h3>
-                <p>Build responsive websites and mobile apps.</p>
+                <p>Responsive, user-friendly websites and mobile apps to enhance your digital presence.</p>
             </div>
             <div class="service-item">
-                <img src="images/mobile_types.jpg" alt="Mobile Types">
+                <img src="images/mobile_types.jpg" alt="IT Consulting" loading="lazy">
                 <h3>Digital Transformation & IT Consulting</h3>
-                <p>Modernize your business with expert guidance.</p>
+                <p>Expert guidance to modernize your business with the latest technology trends.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware & Repair Services Section -->
+    <section id="hardware-repair">
+        <h2>Hardware & Repair Services</h2>
+        <div class="services-container">
+            <!-- Phone Repair -->
+            <div class="service-item">
+                <img src="images/mdm_fix_tool.jpg" alt="MDM Unlocking Tool" loading="lazy">
+                <h3>Phone Repair</h3>
+                <p>Expert phone repair services including:</p>
+                <ul>
+                    <li><strong>KG & MDM Unlocking</strong>: Remove carrier locks and Mobile Device Management restrictions.</li>
+                    <li><strong>FRP Unlocking</strong>: Bypass Factory Reset Protection for seamless device access.</li>
+                    <li><strong>Password Removal</strong>: Unlock devices with forgotten passwords or patterns.</li>
+                    <li><strong>Screen Repair</strong>: Fix cracked or damaged screens with high-quality replacements.</li>
+                    <li><strong>Battery Replacement</strong>: Restore battery life with genuine components.</li>
+                    <li><strong>Software Troubleshooting</strong>: Resolve software glitches and optimize performance.</li>
+                </ul>
+            </div>
+            <div class="service-item">
+                <img src="images/frp_unlock_tool.jpg" alt="FRP Unlocking Tool" loading="lazy">
+                <h3>Computer Repair</h3>
+                <p>Comprehensive computer repair and maintenance services:</p>
+                <ul>
+                    <li><strong>Hardware Repairs</strong>: Fix or upgrade components like motherboards, RAM, and hard drives.</li>
+                    <li><strong>Software Support</strong>: Install, update, and troubleshoot operating systems and applications.</li>
+                    <li><strong>Virus Removal</strong>: Eliminate malware and protect your system with advanced security solutions.</li>
+                    <li><strong>Data Recovery</strong>: Retrieve lost files from damaged or corrupted drives.</li>
+                    <li><strong>Performance Optimization</strong>: Enhance speed and efficiency with expert tuning.</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -69,34 +103,15 @@
         <div class="features-container">
             <div class="feature-item">
                 <h3>Innovation</h3>
-                <p>Cutting-edge solutions to keep you ahead.</p>
+                <p>We deliver cutting-edge solutions to keep your business ahead of the curve.</p>
             </div>
             <div class="feature-item">
                 <h3>Expertise</h3>
-                <p>Experienced team with proven results.</p>
+                <p>Our experienced team ensures high-quality results for every project.</p>
             </div>
             <div class="feature-item">
                 <h3>Support</h3>
-                <p>24/7 assistance for your success.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonials-container">
-            <div class="testimonial-item">
-                <p>"Dk Software Solutions transformed our business with their innovative approach. Their custom software boosted our efficiency by 40%!"</p>
-                <h4>Jane Doe, CEO of TechTrend</h4>
-            </div>
-            <div class="testimonial-item">
-                <p>"Their team delivered a seamless mobile app that our customers love. Exceptional support and expertise!"</p>
-                <h4>John Smith, Founder of InnovateCo</h4>
-            </div>
-            <div class="testimonial-item">
-                <p>"The IT consulting from Dk Software was a game-changer. They guided us through digital transformation effortlessly."</p>
-                <h4>Emily Brown, CTO of FutureWorks</h4>
+                <p>Enjoy 24/7 support to ensure your success at every step.</p>
             </div>
         </div>
     </section>
@@ -104,11 +119,14 @@
     <!-- Sign In Section -->
     <section id="signin">
         <h2>Sign In</h2>
-        <form id="signin-form">
+        <form id="signin-form" name="signin" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="signin">
+            <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
             <label for="signin-email">Email:</label>
-            <input type="email" id="signin-email" placeholder="Email" required>
+            <input type="email" id="signin-email" name="email" placeholder="Email" required>
             <label for="signin-password">Password:</label>
-            <input type="password" id="signin-password" placeholder="Password" required>
+            <input type="password" id="signin-password" name="password" placeholder="Password" required>
+            <div id="signin-error" class="error-message"></div>
             <button type="submit">Sign In</button>
         </form>
     </section>
@@ -116,15 +134,18 @@
     <!-- Sign Up Section -->
     <section id="signup">
         <h2>Sign Up</h2>
-        <form id="signup-form">
+        <form id="signup-form" name="signup" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="signup">
+            <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
             <label for="signup-name">Name:</label>
-            <input type="text" id="signup-name" placeholder="Name" required>
+            <input type="text" id="signup-name" name="name" placeholder="Name" required>
             <label for="signup-email">Email:</label>
-            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="email" id="signup-email" name="email" placeholder="Email" required>
             <label for="signup-password">Password:</label>
-            <input type="password" id="signup-password" placeholder="Password" required>
+            <input type="password" id="signup-password" name="password" placeholder="Password" required>
             <label for="signup-confirm">Confirm Password:</label>
-            <input type="password" id="signup-confirm" placeholder="Confirm Password" required>
+            <input type="password" id="signup-confirm" name="confirm-password" placeholder="Confirm Password" required>
+            <div id="signup-error" class="error-message"></div>
             <button type="submit">Sign Up</button>
         </form>
     </section>
@@ -132,19 +153,22 @@
     <!-- Contact Section -->
     <section id="contact">
         <h2>Get in Touch</h2>
-        <p>Contact us to learn more about our services and how we can help your business thrive.</p>
-        <form id="contact-form">
+        <p>Reach out to learn how we can assist with software solutions, phone repairs, or computer services.</p>
+        <form id="contact-form" name="contact" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
             <label for="contact-name">Name:</label>
-            <input type="text" id="contact-name" placeholder="Name" required>
+            <input type="text" id="contact-name" name="name" placeholder="Name" required>
             <label for="contact-email">Email:</label>
-            <input type="email" id="contact-email" placeholder="Email" required>
+            <input type="email" id="contact-email" name="email" placeholder="Email" required>
             <label for="contact-phone">Phone Number:</label>
-            <input type="tel" id="contact-phone" placeholder="Phone Number">
+            <input type="tel" id="contact-phone" name="phone" placeholder="Phone Number">
             <label for="contact-message">Message:</label>
-            <textarea id="contact-message" placeholder="Message" required></textarea>
+            <textarea id="contact-message" name="message" placeholder="Message" required></textarea>
+            <div id="contact-error" class="error-message"></div>
             <button type="submit">Send</button>
         </form>
-        <p>You can also contact us through our toll-free line: +256750985651</p>
+        <p>You can also contact us through our toll-free line: <a href="tel:+256750985651">+256750985651</a></p>
     </section>
 
     <!-- Footer Section -->
@@ -152,12 +176,12 @@
         <p>© 2025 Dk Software Solutions. All Rights Reserved.</p>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="https://twitter.com">Twitter</a></li>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://www.DkSoftwareSolutions.com">www.DkSoftwareSolutions.com</a></li>
+            <li><a href="https://www.DkSoftwareSolutions.com" target="_blank" rel="noopener">www.DkSoftwareSolutions.com</a></li>
         </ul>
     </footer>
 
     <script src="script.js"></script>
 </body>
-</html>
+                                     </html>
