@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dk Software Solutions offers software development, web/mobile apps, IT consulting, phone repair (KG/MDM unlocking, FRP, passwords), and computer repair services.">
+    <meta name="description" content="Dk Software Solutions offers software development, web/mobile apps, IT consulting, phone repair (KG/MDM unlocking, passwords), and computer repair services.">
     <title>Dk Software Solutions</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header Section with Account and Globe -->
     <header>
         <div class="logo">Dk Software Solutions</div>
-        <div class="hamburger" role="button" aria-label="Toggle navigation menu">☰</div>
+        <div class="account" role="button" aria-label="Account login or sign up">👤</div>
+        <div class="globe" aria-label="Global presence">🌐</div>
         <nav class="nav-menu" aria-label="Main navigation">
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -20,9 +21,23 @@
                 <li><a href="#services">Software Services</a></li>
                 <li><a href="#hardware-repair">Hardware & Repair</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#signup">Sign Up</a></li>
             </ul>
         </nav>
+        <form id="account-form" name="account" data-netlify="true" netlify-honeypot="bot-field" class="account-form">
+            <input type="hidden" name="form-name" value="account">
+            <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
+            <label for="account-email">Email:</label>
+            <input type="email" id="account-email" name="email" placeholder="Email" required>
+            <label for="account-password">Password:</label>
+            <input type="password" id="account-password" name="password" placeholder="Password" required>
+            <label for="account-action">Action:</label>
+            <select id="account-action" name="action" required>
+                <option value="login">Log In</option>
+                <option value="signup">Sign Up</option>
+            </select>
+            <div id="account-error" class="error-message"></div>
+            <button type="submit">Submit</button>
+        </form>
     </header>
 
     <!-- Hero Section -->
@@ -72,18 +87,19 @@
             <div class="service-item">
                 <img src="images/mdm_fix_tool.jpg" alt="MDM Unlocking Tool" loading="lazy">
                 <h3>Phone Repair</h3>
-                <p>Expert phone repair services including:</p>
+                <p>Expert repair services for a wide range of phones, including:</p>
                 <ul>
                     <li><strong>KG & MDM Unlocking</strong>: Remove carrier locks and Mobile Device Management restrictions.</li>
                     <li><strong>FRP Unlocking</strong>: Bypass Factory Reset Protection for seamless device access.</li>
                     <li><strong>Password Removal</strong>: Unlock devices with forgotten passwords or patterns.</li>
-                    <li><strong>Screen Repair</strong>: Fix cracked or damaged screens with high-quality replacements.</li>
-                    <li><strong>Battery Replacement</strong>: Restore battery life with genuine components.</li>
-                    <li><strong>Software Troubleshooting</strong>: Resolve software glitches and optimize performance.</li>
+                    <li><strong>Screen Repair</strong>: Fix cracked screens on iPhone, Samsung, Huawei, and Google Pixel.</li>
+                    <li><strong>Battery Replacement</strong>: Restore battery life for iPhone, Samsung, and more.</li>
+                    <li><strong>Software Troubleshooting</strong>: Resolve glitches on Android and iOS devices.</li>
                 </ul>
+                <p><strong>Supported Brands</strong>: iPhone, Samsung, Huawei, Google Pixel, Xiaomi, and others.</p>
             </div>
             <div class="service-item">
-                <img src="images/frp_unlock_tool.jpg" alt="FRP Unlocking Tool" loading="lazy">
+                <img src="images/all_in_one_unlock_tool.jpg" alt="All-in-One Unlock Tool" loading="lazy">
                 <h3>Computer Repair</h3>
                 <p>Comprehensive computer repair and maintenance services:</p>
                 <ul>
@@ -116,40 +132,6 @@
         </div>
     </section>
 
-    <!-- Sign In Section -->
-    <section id="signin">
-        <h2>Sign In</h2>
-        <form id="signin-form" name="signin" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="signin">
-            <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
-            <label for="signin-email">Email:</label>
-            <input type="email" id="signin-email" name="email" placeholder="Email" required>
-            <label for="signin-password">Password:</label>
-            <input type="password" id="signin-password" name="password" placeholder="Password" required>
-            <div id="signin-error" class="error-message"></div>
-            <button type="submit">Sign In</button>
-        </form>
-    </section>
-
-    <!-- Sign Up Section -->
-    <section id="signup">
-        <h2>Sign Up</h2>
-        <form id="signup-form" name="signup" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="signup">
-            <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
-            <label for="signup-name">Name:</label>
-            <input type="text" id="signup-name" name="name" placeholder="Name" required>
-            <label for="signup-email">Email:</label>
-            <input type="email" id="signup-email" name="email" placeholder="Email" required>
-            <label for="signup-password">Password:</label>
-            <input type="password" id="signup-password" name="password" placeholder="Password" required>
-            <label for="signup-confirm">Confirm Password:</label>
-            <input type="password" id="signup-confirm" name="confirm-password" placeholder="Confirm Password" required>
-            <div id="signup-error" class="error-message"></div>
-            <button type="submit">Sign Up</button>
-        </form>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact">
         <h2>Get in Touch</h2>
@@ -178,10 +160,10 @@
             <li><a href="#home">Home</a></li>
             <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://www.DkSoftwareSolutions.com" target="_blank" rel="noopener">www.DkSoftwareSolutions.com</a></li>
+            <li><a href="https://dksoftware-solutionltd.netlify.app" target="_blank" rel="noopener">Visit Our Site</a></li>
         </ul>
     </footer>
 
     <script src="script.js"></script>
 </body>
-                                     </html>
+            </html>
