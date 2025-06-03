@@ -1,9 +1,30 @@
+// Toggle Main Menu (Hamburger)
+function toggleMainMenu() {
+    const mainMenu = document.getElementById('main-menu');
+    const formContainer = document.getElementById('account-form-container');
+    const languageMenu = document.getElementById('language-menu');
+    
+    // Toggle menu visibility and close other menus
+    mainMenu.classList.toggle('active');
+    if (formContainer.style.display === 'block') {
+        formContainer.style.display = 'none';
+    }
+    if (languageMenu.style.display === 'block') {
+        languageMenu.style.display = 'none';
+    }
+}
+
 // Account Form Toggle
 function toggleAccountForm() {
     const formContainer = document.getElementById('account-form-container');
+    const mainMenu = document.getElementById('main-menu');
     const languageMenu = document.getElementById('language-menu');
-    // Toggle form visibility and close language menu if open
+    
+    // Toggle form visibility and close other menus
     formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+    if (mainMenu.classList.contains('active')) {
+        mainMenu.classList.remove('active');
+    }
     if (languageMenu.style.display === 'block') {
         languageMenu.style.display = 'none';
     }
@@ -12,9 +33,14 @@ function toggleAccountForm() {
 // Language Menu Toggle
 function toggleLanguageMenu() {
     const languageMenu = document.getElementById('language-menu');
+    const mainMenu = document.getElementById('main-menu');
     const formContainer = document.getElementById('account-form-container');
-    // Toggle language menu and close account form if open
+    
+    // Toggle language menu and close other menus
     languageMenu.style.display = languageMenu.style.display === 'none' ? 'block' : 'none';
+    if (mainMenu.classList.contains('active')) {
+        mainMenu.classList.remove('active');
+    }
     if (formContainer.style.display === 'block') {
         formContainer.style.display = 'none';
     }
@@ -22,7 +48,6 @@ function toggleLanguageMenu() {
 
 // Language Selection (Placeholder)
 function selectLanguage(lang) {
-    // Placeholder for language switching logic (e.g., i18next or URL params)
     alert(`Selected language: ${lang}`);
     toggleLanguageMenu();
 }
@@ -70,13 +95,9 @@ document.getElementById('account-form').addEventListener('submit', function(even
         return;
     }
 
-    // Simulate successful submission (replace with actual backend logic)
+    // Simulate successful submission
     alert(`${action.charAt(0).toUpperCase() + action.slice(1)} successful for ${email}!`);
-    
-    // Submit to Netlify
     this.submit();
-    
-    // Close form after submission
     toggleAccountForm();
 });
 
@@ -102,13 +123,9 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         return;
     }
 
-    // Simulate successful submission (replace with actual backend logic)
+    // Simulate successful submission
     alert('Contact form submitted successfully!');
-    
-    // Submit to Netlify
     this.submit();
-    
-    // Reset form
     this.reset();
 });
 
@@ -120,7 +137,7 @@ document.querySelectorAll('.nav-menu a[href^="#"]').forEach(anchor => {
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
             window.scrollTo({
-                top: targetElement.offsetTop - 60, // Adjust for sticky header
+                top: targetElement.offsetTop - 60,
                 behavior: 'smooth'
             });
         }
@@ -129,11 +146,18 @@ document.querySelectorAll('.nav-menu a[href^="#"]').forEach(anchor => {
 
 // Close Menus on Outside Click
 document.addEventListener('click', function(event) {
+    const mainMenu = document.getElementById('main-menu');
     const formContainer = document.getElementById('account-form-container');
     const languageMenu = document.getElementById('language-menu');
+    const hamburgerButton = document.querySelector('.hamburger');
     const accountButton = document.querySelector('.account');
     const globeButton = document.querySelector('.globe');
 
+    // Close main menu if clicking outside
+    if (!mainMenu.contains(event.target) && !hamburgerButton.contains(event.target)) {
+        mainMenu.classList.remove('active');
+    }
+    
     // Close account form if clicking outside
     if (!formContainer.contains(event.target) && !accountButton.contains(event.target)) {
         formContainer.style.display = 'none';
@@ -147,7 +171,7 @@ document.addEventListener('click', function(event) {
 
 // Initialize on Page Load
 document.addEventListener('DOMContentLoaded', function() {
-    // Ensure forms and menus are hidden on load
+    document.getElementById('main-menu').classList.remove('active');
     document.getElementById('account-form-container').style.display = 'none';
     document.getElementById('language-menu').style.display = 'none';
 });
