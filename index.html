@@ -5,15 +5,361 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dk Software Solutions offers software development, web/mobile apps, IT consulting, phone repair (KG/MDM unlocking, passwords), and computer repair services.">
     <title>Dk Software Solutions</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background-color: #f8f8f8;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .account, .globe {
+            cursor: pointer;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+        }
+
+        .account svg, .globe svg {
+            width: 24px;
+            height: 24px;
+            stroke: #333;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: #007bff;
+        }
+
+        /* Account Form Styles */
+        .account-form-container {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: white;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 100;
+            width: 300px;
+            display: none;
+        }
+
+        .account-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .account-tabs .tab {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+            background: #eee;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .account-tabs .tab.active {
+            background: #007bff;
+            color: white;
+        }
+
+        .account-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .account-form label {
+            font-weight: bold;
+        }
+
+        .account-form input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .account-form button {
+            padding: 0.5rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .account-form button:hover {
+            background: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+            min-height: 1.2rem;
+        }
+
+        /* Hero Section */
+        #home {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(to bottom, #e6f3ff, #fff);
+        }
+
+        #home h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            padding: 0.75rem 1.5rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #0056b3;
+        }
+
+        /* About Section */
+        #about {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #about h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        #about p, #about ul {
+            margin-bottom: 1rem;
+        }
+
+        /* Services and Hardware Sections */
+        #services, #hardware-repair {
+            padding: 2rem;
+            background: #f8f8f8;
+        }
+
+        #services h2, #hardware-repair h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #007bff;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .service-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .service-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-item ul {
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+        /* Features Section */
+        #features {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #features h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #007bff;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 2rem;
+            background: #f8f8f8;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        #contact input, #contact textarea {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #contact textarea {
+            min-height: 100px;
+        }
+
+        #contact button {
+            padding: 0.75rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #contact button:hover {
+            background: #0056b3;
+        }
+
+        /* Footer Styles */
+        footer {
+            padding: 1rem;
+            background: #333;
+            color: white;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+            }
+            .nav-menu ul {
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+            }
+            .account-form-container {
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section with Account and Globe -->
     <header>
         <div class="logo">Dk Software Solutions</div>
-        <div class="account" role="button" aria-label="Account login or sign up">👤</div>
-        <div class="globe" aria-label="Global presence">🌐</div>
+        <button class="account" aria-label="Toggle account login or signup" onclick="toggleAccountForm()">
+            <!-- SVG Icon for Account -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                <path d="M12 15c-4.42 0-8 2.24-8 5v2h16v-2c0-2.76-3.58-5-8-5z"></path>
+            </svg>
+        </button>
+        <button class="globe" aria-label="Select language or region" onclick="toggleLanguageMenu()">
+            <!-- SVG Icon for Globe -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M2 12h20"></path>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"></path>
+                <path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"></path>
+            </svg>
+        </button>
         <nav class="nav-menu" aria-label="Main navigation">
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -23,21 +369,43 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <form id="account-form" name="account" data-netlify="true" netlify-honeypot="bot-field" class="account-form">
-            <input type="hidden" name="form-name" value="account">
-            <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
-            <label for="account-email">Email:</label>
-            <input type="email" id="account-email" name="email" placeholder="Email" required>
-            <label for="account-password">Password:</label>
-            <input type="password" id="account-password" name="password" placeholder="Password" required>
-            <label for="account-action">Action:</label>
-            <select id="account-action" name="action" required>
-                <option value="login">Log In</option>
-                <option value="signup">Sign Up</option>
-            </select>
-            <div id="account-error" class="error-message"></div>
-            <button type="submit">Submit</button>
-        </form>
+        <!-- Account Form (Hidden by Default) -->
+        <div id="account-form-container" class="account-form-container">
+            <div class="account-tabs">
+                <button class="tab active" onclick="showTab('login')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <path d="M10 17l5-5-5-5"></path>
+                        <path d="M13.8 12H3"></path>
+                    </svg>
+                    Log In
+                </button>
+                <button class="tab" onclick="showTab('signup')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M12 5v14"></path>
+                        <path d="M5 12h14"></path>
+                    </svg>
+                    Sign Up
+                </button>
+            </div>
+            <form id="account-form" name="account" data-netlify="true" netlify-honeypot="bot-field" class="account-form">
+                <input type="hidden" name="form-name" value="account">
+                <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
+                <input type="hidden" name="action" id="account-action" value="login">
+                <label for="account-email">Email:</label>
+                <input type="email" id="account-email" name="email" placeholder="Email" required>
+                <label for="account-password">Password:</label>
+                <input type="password" id="account-password" name="password" placeholder="Password" required>
+                <div id="account-error" class="error-message"></div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <!-- Language Menu (Placeholder, Hidden by Default) -->
+        <div id="language-menu" style="display: none; position: absolute; top: 60px; right: 60px; background: white; padding: 1rem; border: 1px solid #ccc; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+            <p><a href="#" onclick="selectLanguage('en')">English</a></p>
+            <p><a href="#" onclick="selectLanguage('es')">Spanish</a></p>
+            <p><a href="#" onclick="selectLanguage('fr')">French</a></p>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -83,7 +451,6 @@
     <section id="hardware-repair">
         <h2>Hardware & Repair Services</h2>
         <div class="services-container">
-            <!-- Phone Repair -->
             <div class="service-item">
                 <img src="images/mdm_fix_tool.jpg" alt="MDM Unlocking Tool" loading="lazy">
                 <h3>Phone Repair</h3>
@@ -164,6 +531,92 @@
         </ul>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Toggle account form visibility
+        function toggleAccountForm() {
+            const formContainer = document.getElementById('account-form-container');
+            formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+            document.getElementById('language-menu').style.display = 'none'; // Close language menu if open
+        }
+
+        // Toggle language menu (placeholder)
+        function toggleLanguageMenu() {
+            const langMenu = document.getElementById('language-menu');
+            langMenu.style.display = langMenu.style.display === 'none' ? 'block' : 'none';
+            document.getElementById('account-form-container').style.display = 'none'; // Close account form if open
+        }
+
+        // Placeholder for language selection
+        function selectLanguage(lang) {
+            alert(`Selected language: ${lang}`); // Replace with actual language switch logic
+            toggleLanguageMenu();
+        }
+
+        // Switch between login and signup tabs
+        function showTab(tab) {
+            const loginTab = document.querySelector('.account-tabs .tab:first-child');
+            const signupTab = document.querySelector('.account-tabs .tab:last-child');
+            const actionInput = document.getElementById('account-action');
+            if (tab === 'login') {
+                loginTab.classList.add('active');
+                signupTab.classList.remove('active');
+                actionInput.value = 'login';
+            } else {
+                signupTab.classList.add('active');
+                loginTab.classList.remove('active');
+                actionInput.value = 'signup';
+            }
+        }
+
+        // Account form validation and submission
+        document.getElementById('account-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('account-email').value;
+            const password = document.getElementById('account-password').value;
+            const action = document.getElementById('account-action').value;
+            const errorDiv = document.getElementById('account-error');
+
+            if (!email || !password) {
+                errorDiv.textContent = 'Please fill in all fields.';
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errorDiv.textContent = 'Please enter a valid email.';
+                return;
+            }
+            if (password.length < 6) {
+                errorDiv.textContent = 'Password must be at least 6 characters.';
+                return;
+            }
+
+            errorDiv.textContent = '';
+            // Simulate successful submission (replace with actual Netlify backend logic)
+            alert(`${action.charAt(0).toUpperCase() + action.slice(1)} successful for ${email}!`);
+            this.submit(); // Proceed with Netlify form submission
+            toggleAccountForm(); // Close form after submission
+        });
+
+        // Contact form validation
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+            const errorDiv = document.getElementById('contact-error');
+
+            if (!name || !email || !message) {
+                errorDiv.textContent = 'Please fill in all required fields.';
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errorDiv.textContent = 'Please enter a valid email.';
+                return;
+            }
+
+            errorDiv.textContent = '';
+            alert('Contact form submitted successfully!');
+            this.submit(); // Proceed with Netlify form submission
+        });
+    </script>
 </body>
-            </html>
+    </html>
