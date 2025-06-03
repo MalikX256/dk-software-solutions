@@ -33,6 +33,25 @@ header {
     letter-spacing: 1px;
 }
 
+.hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: none; /* Hidden on desktop */
+}
+
+.hamburger svg {
+    width: 30px;
+    height: 30px;
+    stroke: #333;
+    transition: stroke 0.2s;
+}
+
+.hamburger:hover svg {
+    stroke: #007bff;
+}
+
 .account, .globe {
     background: none;
     border: none;
@@ -54,6 +73,10 @@ header {
 
 .account:hover svg, .globe:hover svg {
     stroke: #007bff;
+}
+
+.nav-menu {
+    display: flex;
 }
 
 .nav-menu ul {
@@ -175,7 +198,7 @@ header {
 }
 
 /* Language Menu Styles */
-#language-menu {
+.language-menu {
     position: absolute;
     top: 60px;
     right: 60px;
@@ -185,19 +208,20 @@ header {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     z-index: 100;
+    display: none;
 }
 
-#language-menu p {
+.language-menu p {
     margin: 0.5rem 0;
 }
 
-#language-menu a {
+.language-menu a {
     text-decoration: none;
     color: #333;
     font-size: 0.9rem;
 }
 
-#language-menu a:hover {
+.language-menu a:hover {
     color: #007bff;
 }
 
@@ -478,21 +502,30 @@ footer a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    header {
-        flex-wrap: wrap;
-        padding: 1rem;
+    .hamburger {
+        display: block; /* Show hamburger on mobile */
     }
 
-    .logo {
-        font-size: 1.5rem;
+    .nav-menu {
+        display: none; /* Hide menu by default on mobile */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #f8f9fa;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        z-index: 99;
+    }
+
+    .nav-menu.active {
+        display: block; /* Show menu when active */
     }
 
     .nav-menu ul {
         flex-direction: column;
         text-align: center;
-        width: 100%;
-        gap: 0.5rem;
-        margin-top: 1rem;
+        gap: 1rem;
     }
 
     .account-form-container {
@@ -501,7 +534,7 @@ footer a:hover {
         top: 80px;
     }
 
-    #language-menu {
+    .language-menu {
         right: 5%;
         top: 80px;
         width: 90%;
@@ -541,4 +574,4 @@ footer a:hover {
     #about, #services, #hardware-repair, #features, #contact {
         padding: 2rem 1rem;
     }
-        }
+    }
